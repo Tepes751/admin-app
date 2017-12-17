@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" type="text/css"
+          href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+    <style>
+        span{
+            font-weight: bold;
+        }
+
+    </style>
+    <title>Client detail</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="row" style="margin-top:20px; width:100%">
+        <div class="col-xs-12 col-sm-12 col-md-8">
+            <h1>Clients details</h1>
+            <a th:href="@{'/'}">Back to client list</a>
+
+            <div>First name : <span th:text="${client.firstName}"></span></div>
+            <div>Last name : <span th:text="${client.lastName}"></span></div>
+            <div>Patronymic : <span th:text="${client.patronymic}"></span></div>
+            <div>Email : <span th:text="${client.email}"></span></div>
+            <div>Phone number : <span th:text="${client.phone}"></span></div>
+
+            <div><a th:href="@{'/client/edit/' + ${client.id}}">Edit</a></div>
+            <div><a th:href="@{'/client/delete/' + ${client.id}}">Delete</a></div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

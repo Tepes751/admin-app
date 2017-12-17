@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" type="text/css"
+          href="webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+    <style>
+        span {
+            font-weight: bold;
+        }
+
+    </style>
+    <title>Client form</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="row" style="margin-top:20px; width:100%">
+        <div class="col-xs-12 col-sm-12 col-md-8">
+            <h1 th:if="${client.id != null}">Edit client</h1>
+            <h1 th:if="${client.id == null}">New client</h1>
+
+            <a th:href="@{'/'}">Back to client list</a>
+
+            <form th:object="${client}" th:action="@{/client/save-or-update}" method="post">
+                <label class="col-sm-3">Id :</label>
+                <div class="col-sm-9">
+                    <input th:field="*{id}" readonly="readonly"/>
+                </div>
+
+                <label class="col-sm-3">First name :</label>
+                <div class="col-sm-9">
+                    <input th:field="*{firstName}"/>
+                </div>
+
+                <label class="col-sm-3">Last name : </label>
+                <div class="col-sm-9">
+                    <input th:field="*{lastName}"/>
+                </div>
+
+                <label class="col-sm-3">Patronymic : </label>
+                <div class="col-sm-9">
+                    <input th:field="*{patronymic}"/>
+                </div>
+
+                <label class="col-sm-3">Email : </label>
+                <div class="col-sm-9">
+                    <input th:field="*{email}"/>
+                </div>
+
+                <label class="col-sm-3">Phone number : </label>
+                <div class="col-sm-9">
+                    <input th:field="*{phone}"/>
+                </div>
+
+
+                <button type="submit">Submit</button>
+                <a type="button" th:href="@{'/'}">Cancel</a>
+            </form>
+
+            <div><a th:href="@{'/client/delete/' + ${client.id}}">Delete</a></div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

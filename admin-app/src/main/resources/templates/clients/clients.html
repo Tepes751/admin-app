@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css"
+          href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <title>Clients</title>
+
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+<!--/*@thymesVar id="clients" type="com.adminapp.adminapp.dto.ClientDto"*/-->
+
+<div class="container">
+    <div class="row" style="margin-top:20px">
+        <div class="col-xs-12 col-sm-12 col-md-8">
+                <h1>Clients</h1>
+            <a th:href="@{'/client/new'}">Create new client</a>
+            <table style="width:100%">
+                <tr>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>Patronymic</th>
+                    <th>Email</th>
+                    <th>Phone number</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr th:each="client: ${clients}">
+                    <td th:text="${client.firstName}"></td>
+                    <td th:text="${client.lastName}"></td>
+                    <td th:text="${client.patronymic}"></td>
+                    <td th:text="${client.email}"></td>
+                    <td th:text="${client.phone}"></td>
+                    <td><a th:href="@{'/client/' + ${client.id}}">Details</a></td>
+                    <td><a th:href="@{'/client/edit/' + ${client.id}}">Edit</a></td>
+                    <td><a th:href="@{'/client/delete/' + ${client.id}}">Delete</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
